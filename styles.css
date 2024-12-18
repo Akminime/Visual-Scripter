@@ -29,6 +29,18 @@ body {
     text-align: center;
 }
 
+#node1 {
+    background-color: #45a049;
+}
+
+#node2 {
+    background-color: aqua;
+}
+
+#node3 {
+    background-color: yellow;
+}
+
 #canvas {
     flex-grow: 1;
     background-color: #eaeaea;
