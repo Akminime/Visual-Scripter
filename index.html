@@ -4,61 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Visual Scripting Tool</title>
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                display: flex;
-                margin: 0;
-                padding: 0;
-            }
-
-            #sidebar {
-                width: 250px;
-                background-color: #f4f4f4;
-                padding: 20px;
-                box-sizing: border-box;
-                height: 100vh;
-                border-right: 1px solid #ddd;
-            }
-
-            #sidebar h2 {
-                margin-top: 0;
-            }
-
-            #node-list {
-                margin-top: 20px;
-            }
-
-            .node {
-                background-color: #ddd;
-                padding: 10px;
-                cursor: pointer;
-                text-align: center;
-            }
-
-            #canvas {
-                flex-grow: 1;
-                background-color: #eaeaea;
-                position: relative;
-                padding: 20px;
-            }
-
-            #export-btn {
-                padding: 10px 20px;
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                position: absolute;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            #export-btn:hover {
-                background-color: #45a049;
-            }
-        </style>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         
@@ -74,36 +21,5 @@
         <div id="canvas">
             <button id="export-btn">Export</button>
         </div>
-
-        <script>
-            const nodes = document.querySelectorAll('.node');
-            const canvas = document.getElementById('canvas');
-
-            nodes.forEach(node => {
-                node.addEventListener('dragstart', (e) => {
-                    e.dataTransfer.setData('text/plain', node.id);
-                });
-            });
-
-            canvas.addEventListener('dragover', (e) => {
-                e.preventDefault();
-            });
-
-            canvas.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const nodeId = e.dataTransfer.getData('text/plain');
-                const nodeElement = document.getElementById(nodeId);
-
-                const clonedNode = nodeElement.cloneNode(true);
-                const xPos = e.clientX - canvas.offsetLeft;
-                const yPos = e.clientY - canvas.offsetTop;
-
-                clonedNode.style.position = 'absolute';
-                clonedNode.style.left = `${xPos}px`;
-                clonedNode.style.top = `${yPos}px`;
-
-                canvas.appendChild(clonedNode)
-            });
-        </script>
     </body>
 </html>
